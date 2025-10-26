@@ -17,8 +17,9 @@
           <h3 class="text-2xl font-semibold border-b pb-2 mb-4">Detalles</h3>
           <div class="space-y-4">
             <div>
-              <h4 class="font-semibold">CV</h4>
-              <a href="#" class="text-blue-500 hover:underline">Descargar CV (próximamente)</a>
+              <h4 class="font-semibold">Extracto del CV</h4>
+              <p v-if="profile.cv" class="text-gray-700 mt-1 whitespace-pre-wrap">{{ profile.cv }}</p>
+              <span v-else class="text-gray-500">No disponible</span>
             </div>
             <div>
               <h4 class="font-semibold">Redes Profesionales y Personales</h4>
@@ -51,12 +52,10 @@ const store = useProfileStore();
 
 const profileId = route.params.id;
 const profile = ref(null);
-const loading = ref(true);
+// Usamos el estado de carga global del store
+const loading = computed(() => store.loading);
 
 onMounted(async () => {
-  // Asegurarnos de que los perfiles están cargados
-  await store.fetchProfiles();
-  profile.value = store.getProfileById(profileId);
-  loading.value = false;
+  profile.value = await store.fetchProfileById(profileId);
 });
 </script>

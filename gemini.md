@@ -25,7 +25,7 @@
 - `foto_url` (text)
 - `organismo` (text)
 - `cargo` (text)
-- `cv_url` (text)
+- `cv` (text)
 - `linkedin_url` (text)
 - `github_url` (text)
 - `twitter_url` (text)
