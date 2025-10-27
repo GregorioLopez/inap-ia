@@ -2,6 +2,15 @@
   <div v-if="loading" class="text-center">Cargando perfil...</div>
   <div v-else-if="!profile" class="text-center text-red-500">Perfil no encontrado.</div>
   <div v-else>
+    <!-- Botón para volver al inicio (fuera de la card) -->
+    <div class="mb-4">
+      <router-link to="/"
+        class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
+        <i class="pi pi-arrow-left" aria-hidden="true"></i>
+        Volver al inicio
+      </router-link>
+    </div>
+
     <div class="glass rounded-lg p-8 max-w-screen-lg mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Columna Izquierda: Foto y datos principales -->
@@ -48,15 +57,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Botón para volver al inicio -->
-      <div class="mt-8 flex gap-4">
-        <router-link to="/"
-          class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
-          <i class="pi pi-arrow-left" aria-hidden="true"></i>
-          Volver al inicio
-        </router-link>
       </div>
     </div>
   </div>
