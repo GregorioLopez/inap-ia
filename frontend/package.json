@@ -6,10 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "import-data": "node import-data.js",
+    "clear-data": "node clear-data.js"
   },
   "dependencies": {
+    "@primevue/themes": "^4.4.1",
     "@supabase/supabase-js": "^2.76.1",
+    "@tailwindcss/postcss": "^4.1.16",
     "pinia": "^3.0.3",
     "primeicons": "^7.0.0",
     "primevue": "^4.4.1",
@@ -19,6 +23,8 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.1",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.3",
+    "node-fetch": "^3.3.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
     "vite": "^7.1.7"

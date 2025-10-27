@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 import router from './router';
 
 import PrimeVue from 'primevue/config';
-import 'primevue/resources/themes/aura-light-green/theme.css';
+import Aura from '@primevue/themes/aura';
 import 'primeicons/primeicons.css';
 
 import './style.css';
@@ -14,6 +14,10 @@ const app = createApp(App);
 
 app.use(pinia);
 app.use(router);
-app.use(PrimeVue);
+app.use(PrimeVue, {
+    theme: {
+        preset: Aura
+    }
+});
 
 app.mount('#app');
