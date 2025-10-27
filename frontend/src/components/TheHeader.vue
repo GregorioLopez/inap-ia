@@ -10,17 +10,15 @@
       <ul class="flex space-x-6">
         <li>
           <router-link to="/"
-            class="hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded px-2 py-1"
-            aria-current="page">
+            class="hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded px-2 py-1">
             Inicio
           </router-link>
         </li>
         <li>
-          <button @click="handleAdminClick"
-            class="hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded px-2 py-1 bg-transparent border-none cursor-pointer text-white"
-            aria-label="Ir a administración o login">
+          <router-link :to="authStore.isAuthenticated ? '/maintenance' : '/login'"
+            class="hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded px-2 py-1">
             Administración
-          </button>
+          </router-link>
         </li>
         <li>
           <router-link to="/about"
@@ -34,19 +32,9 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import { useAuthStore } from '../stores/auth';
 
-const router = useRouter();
 const authStore = useAuthStore();
-
-const handleAdminClick = () => {
-  if (authStore.isAuthenticated) {
-    router.push('/maintenance');
-  } else {
-    router.push('/login');
-  }
-};
 </script>
 
 <style scoped></style>

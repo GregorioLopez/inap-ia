@@ -25,9 +25,11 @@
 
     <!-- Tabla de perfiles -->
     <div class="glass rounded-lg">
-      <DataTable :value="filteredProfiles" :loading="profileStore.loading" paginator :rows="rowsPerPage"
+      <DataTable :key="`maintenance-table-${rowsPerPage}-${currentPage}`" :value="filteredProfiles"
+        :loading="profileStore.loading" paginator :rows="rowsPerPage" :first="currentPage * rowsPerPage"
         :rowsPerPageOptions="[5, 10, 20, 50]" dataKey="id" class="p-datatable-customers" stripedRows
-        @page="onPageChange" @rows-change="onRowsPerPageChange">
+        :sortField="sortField" :sortOrder="sortOrder" @page="onPageChange" @rows-change="onRowsPerPageChange"
+        @sort="onSort">
         <Column field="id" header="ID" :sortable="true" style="width: 80px"></Column>
 
         <Column header="Foto" style="width: 100px">
@@ -160,22 +162,29 @@ const profileToDelete = ref(null);
 const searchFilter = ref('');
 const rowsPerPage = ref(10);
 const currentPage = ref(0);
+const sortField = ref(null);
+const sortOrder = ref(null);
+let isRestoring = false; // Flag para evitar guardar durante la restauración
 
 // Clave para localStorage
 const STORAGE_KEY = 'maintenanceViewState';
 
 // Función para guardar el estado en localStorage
 const saveViewState = () => {
+  if (isRestoring) return; // No guardar mientras se restaura
   const state = {
     searchFilter: searchFilter.value,
     rowsPerPage: rowsPerPage.value,
     currentPage: currentPage.value,
+    sortField: sortField.value,
+    sortOrder: sortOrder.value,
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 };
 
 // Función para restaurar el estado desde localStorage
 const restoreViewState = () => {
+  isRestoring = true;
   const savedState = localStorage.getItem(STORAGE_KEY);
   if (savedState) {
     try {
@@ -183,24 +192,37 @@ const restoreViewState = () => {
       searchFilter.value = state.searchFilter || '';
       rowsPerPage.value = state.rowsPerPage || 10;
       currentPage.value = state.currentPage || 0;
+      sortField.value = state.sortField || null;
+      sortOrder.value = state.sortOrder || null;
     } catch (e) {
       console.error('Error al restaurar el estado:', e);
     }
   }
+  isRestoring = false;
 };
 
 // Observar cambios para guardar el estado
-watch([searchFilter, rowsPerPage, currentPage], () => {
+watch([searchFilter, rowsPerPage, currentPage, sortField, sortOrder], () => {
   saveViewState();
 });
 
 // Manejadores de eventos de la tabla
 const onPageChange = (event) => {
   currentPage.value = event.page;
+  saveViewState();
 };
 
 const onRowsPerPageChange = (event) => {
   rowsPerPage.value = event.rows;
+  currentPage.value = 0; // Resetear a la primera página
+  saveViewState();
+};
+
+// Manejador de eventos de ordenación
+const onSort = (event) => {
+  sortField.value = event.sortField;
+  sortOrder.value = event.sortOrder;
+  saveViewState();
 };
 
 const formData = ref({
