@@ -8,7 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "import-data": "node import-data.js",
-    "clear-data": "node clear-data.js"
+    "import-data-json": "node import-data-from-json.js",
+    "clear-data": "node clear-data.js",
+    "reset-data": "node reset-data.js",
+    "generate-mock": "node generate-mock-data.js && node generate-mock-js.js"
   },
   "dependencies": {
     "@primevue/themes": "^4.4.1",
