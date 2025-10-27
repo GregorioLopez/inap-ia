@@ -2,7 +2,7 @@
   <div v-if="loading" class="text-center">Cargando perfil...</div>
   <div v-else-if="!profile" class="text-center text-red-500">Perfil no encontrado.</div>
   <div v-else>
-    <div class="glass rounded-lg p-8">
+    <div class="glass rounded-lg p-8 max-w-screen-lg mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Columna Izquierda: Foto y datos principales -->
         <div class="md:col-span-1 flex flex-col items-center text-center">
