@@ -54,7 +54,7 @@
     <!-- Botón flotante para ir arriba -->
     <Transition name="fade">
       <button v-if="showScrollToTop" @click="scrollToTop"
-        class="fixed bottom-8 right-8 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"
+        class="fixed bottom-8 right-8 bg-gray-800 text-white w-12 h-12 rounded-full shadow-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 flex items-center justify-center"
         aria-label="Ir al inicio de la página">
         <i class="pi pi-arrow-up" aria-hidden="true"></i>
       </button>
