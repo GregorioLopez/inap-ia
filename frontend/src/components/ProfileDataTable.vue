@@ -1,1 +1,44 @@
-<template>\n  <div class=\"card\">\n    <DataTable v-model:filters=\"filters\" :value=\"profiles\" :loading=\"loading\" paginator :rows=\"5\" :rowsPerPageOptions=\"[5, 10, 20]\" dataKey=\"id\" :globalFilterFields=\"[\'nombre\', \'apellidos\', \'organismo\', \'cargo\']\" class=\"p-datatable-customers\">\n      \n      <template #header>\n        <div class=\"flex justify-end\">\n          <span class=\"p-input-icon-left\">\n            <i class=\"pi pi-search\" />\n            <InputText v-model=\"filters[\'global\'].value\" placeholder=\"Búsqueda global\" />\n          </span>\n        </div>\n      </template>\n\n      <Column header=\"Nombre completo\" filterField=\"nombre\" :showFilterMenu=\"false\">\n         <template #body=\"{ data }\">\n            <div class=\"flex items-center gap-4\">\n              <Avatar :image=\"data.foto_url\" shape=\"circle\" size=\"large\" />\n              <span>{{ data.nombre }} {{ data.apellidos }}</span>\n            </div>\n        </template>\n        <template #filter=\"{ filterModel, filterCallback }\">\n            <InputText v-model=\"filterModel.value\" @input=\"filterCallback()\" placeholder=\"Filtrar por nombre\" class=\"p-column-filter\" />\n        </template>\n      </Column>\n\n      <Column field=\"organismo\" header=\"Organismo\" :sortable=\"true\" filterField=\"organismo\" :showFilterMenu=\"false\">\n        <template #filter=\"{ filterModel, filterCallback }\">\n            <InputText v-model=\"filterModel.value\" @input=\"filterCallback()\" placeholder=\"Filtrar por organismo\" class=\"p-column-filter\" />\n        </template>\n      </Column>\n\n      <Column field=\"cargo\" header=\"Cargo\" :sortable=\"true\" filterField=\"cargo\" :showFilterMenu=\"false\">\n        <template #filter=\"{ filterModel, filterCallback }\">\n            <InputText v-model=\"filterModel.value\" @input=\"filterCallback()\" placeholder=\"Filtrar por cargo\" class=\"p-column-filter\" />\n        </template>\n      </Column>\n\n      <Column header=\"Acciones\">\n        <template #body=\"{ data }\">\n          <router-link :to=\"\`/profile/${data.id}\`\">\n            <Button icon=\"pi pi-search\" class=\"p-button-rounded p-button-text\"></Button>\n          </router-link>\n        </template>\n      </Column>\n\n    </DataTable>\n  </div>\n</template>\n\n<script setup>\nimport { ref } from \'vue\';\nimport DataTable from \'primevue/datatable\';\nimport Column from \'primevue/column\';\nimport InputText from \'primevue/inputtext\';\nimport Avatar from \'primevue/avatar\';\nimport Button from \'primevue/button\';\nimport { FilterMatchMode } from \'primevue/api\';\n\ndefineProps({\n  profiles: Array,\n  loading: Boolean,\n});\n\nconst filters = ref({\n    global: { value: null, matchMode: FilterMatchMode.CONTAINS },\n    nombre: { value: null, matchMode: FilterMatchMode.CONTAINS },\n    organismo: { value: null, matchMode: FilterMatchMode.CONTAINS },\n    cargo: { value: null, matchMode: FilterMatchMode.CONTAINS },\n});\n</script>\n\n<style scoped>\n/* Estilos específicos si son necesarios */\n</style>\n
+<template>
+  <div class="card">
+    <DataTable :value="profiles" :loading="loading" paginator :rows="5" :rowsPerPageOptions="[5, 10, 20]" dataKey="id" class="p-datatable-customers">
+      
+      <Column header="Nombre completo" :sortable="true" sortField="apellidos">
+         <template #body="{ data }">
+            <div class="flex items-center gap-4">
+              <Avatar :image="data.foto_url" shape="circle" size="large" />
+              <span>{{ data.nombre }} {{ data.apellidos }}</span>
+            </div>
+        </template>
+      </Column>
+
+      <Column field="organismo" header="Organismo" :sortable="true"></Column>
+
+      <Column field="cargo" header="Cargo" :sortable="true"></Column>
+
+      <Column header="Acciones">
+        <template #body="{ data }">
+          <router-link :to="`/profile/${data.id}`">
+            <Button icon="pi pi-search" class="p-button-rounded p-button-text"></Button>
+          </router-link>
+        </template>
+      </Column>
+
+    </DataTable>
+  </div>
+</template>
+
+<script setup>
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Avatar from 'primevue/avatar';
+import Button from 'primevue/button';
+
+defineProps({
+  profiles: Array,
+  loading: Boolean,
+});
+</script>
+
+<style scoped>
+/* Estilos específicos si son necesarios */
+</style>
