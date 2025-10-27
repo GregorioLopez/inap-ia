@@ -94,7 +94,7 @@
 
       <div class="mt-8 text-center">
         <router-link to="/"
-          class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors">
+          class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400">
           Volver al inicio
         </router-link>
       </div>

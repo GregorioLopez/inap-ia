@@ -9,16 +9,21 @@
             Contraseña
           </label>
           <Password v-model="password" id="password" :feedback="false" toggleMask placeholder="Introduce la contraseña"
-            class="w-full" :class="{ 'p-invalid': error }" @keyup.enter="handleLogin" />
-          <small v-if="error" class="text-red-500 mt-1 block">{{ error }}</small>
+            class="w-full" :class="{ 'p-invalid': error }" @keyup.enter="handleLogin" aria-label="Campo de contraseña"
+            :aria-describedby="error ? 'password-error' : undefined" />
+          <small v-if="error" id="password-error" class="text-red-500 mt-1 block" role="alert">
+            {{ error }}
+          </small>
         </div>
 
-        <Button type="submit" label="Iniciar Sesión" icon="pi pi-sign-in" class="w-full" :loading="loading" />
+        <Button type="submit" label="Iniciar Sesión" icon="pi pi-sign-in" class="w-full" :loading="loading"
+          aria-label="Botón para iniciar sesión" />
       </form>
 
       <div class="mt-6 text-center">
-        <router-link to="/" class="text-gray-600 hover:text-gray-800 text-sm">
-          <i class="pi pi-arrow-left mr-1"></i>
+        <router-link to="/"
+          class="text-gray-600 hover:text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 rounded px-2 py-1 inline-block">
+          <i class="pi pi-arrow-left mr-1" aria-hidden="true"></i>
           Volver al inicio
         </router-link>
       </div>
