@@ -1,4 +1,4 @@
-# Aplicación de perfiles Profesionales
+# Aplicación de perfiles profesionales
 
 Aplicación web para gestionar y visualizar perfiles profesionales, construida con Vue 3, Vite, Tailwind CSS, PrimeVue y Supabase.
 
