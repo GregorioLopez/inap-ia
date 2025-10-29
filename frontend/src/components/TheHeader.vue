@@ -4,7 +4,7 @@
       <div class="text-2xl font-bold">
         <router-link to="/"
           class="hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2  rounded px-2 py-1">
-          Portfolio INAP-IA
+          Perfiles INAP-IA
         </router-link>
       </div>
       <ul class="flex space-x-6">

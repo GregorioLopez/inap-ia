@@ -1,14 +1,14 @@
 <template>
   <div class="max-w-4xl mx-auto">
     <div class="glass rounded-lg p-8">
-      <h1 class="text-4xl font-bold text-gray-800 mb-6">Acerca de Portfolio INAP-IA</h1>
+      <h1 class="text-4xl font-bold text-gray-800 mb-6">Acerca de Perfiles INAP-IA</h1>
 
       <div class="space-y-6 text-gray-700">
         <section>
-          <h2 class="text-2xl font-semibold text-gray-800 mb-3">¿Qué es Portfolio INAP-IA?</h2>
+          <h2 class="text-2xl font-semibold text-gray-800 mb-3">¿Qué es Perfiles INAP-IA?</h2>
           <p class="leading-relaxed">
-            Portfolio INAP-IA es una aplicación web moderna diseñada para gestionar y visualizar
-            portfolios profesionales de manera eficiente y atractiva. Desarrollada con las últimas
+            Perfiles INAP-IA es una aplicación web moderna diseñada para gestionar y visualizar
+            perfiles profesionales de manera eficiente y atractiva. Desarrollada con las últimas
             tecnologías web, ofrece una experiencia de usuario fluida y responsive.
           </p>
         </section>
@@ -58,7 +58,7 @@
         <section>
           <h2 class="text-2xl font-semibold text-gray-800 mb-3">Prueba la Sección de Administración</h2>
           <p class="leading-relaxed mb-4">
-            Portfolio INAP-IA incluye una sección administrativa completa para gestionar los perfiles profesionales.
+            Perfiles INAP-IA incluye una sección administrativa completa para gestionar los perfiles profesionales.
             Puedes acceder a ella desde el enlace "Administración" en la cabecera.
           </p>
           <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-4">
