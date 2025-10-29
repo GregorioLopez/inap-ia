@@ -1,0 +1,10 @@
+[build]
+  command = "cd frontend && npm run build"
+  publish = "frontend/dist"
+
+# Redirigir todas las rutas a index.html para que Vue Router las maneje
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
