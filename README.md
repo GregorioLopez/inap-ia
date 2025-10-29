@@ -1,6 +1,6 @@
-# Aplicación de Portfolios Profesionales
+# Aplicación de perfiles Profesionales
 
-Aplicación web para gestionar y visualizar portfolios profesionales, construida con Vue 3, Vite, Tailwind CSS, PrimeVue y Supabase.
+Aplicación web para gestionar y visualizar perfiles profesionales, construida con Vue 3, Vite, Tailwind CSS, PrimeVue y Supabase.
 
 ## 🚀 Inicio Rápido
 
